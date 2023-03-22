@@ -1,10 +1,26 @@
-import React from "react";
+import React, {useEffect, useState} from 'react';
+import { fetchIndividual } from './fetchIndividual';
+import { Card } from './Card/Card';
 
-export const CardItem = ({charter}) => {
+
+
+export const CardItem = ({selectedCharacter}) => {
+    const [detalle, setDetalle] = useState({})
+    const [idDinamico, setIdiDinamico] = useState('1')
+    useEffect(() => {
+        fetchIndividual(idDinamico)
+         .then((respuesta) => {
+            setDetalle(respuesta)
+         })
+       }, [idDinamico])
+       console.log({detalle})
     return (
-        <div className="card">
-            <img src={charter.image} alt={charter.name} />
-            <div className="card-body">
+        <>
+        <div className='col col-10 d-flex flex-wrap'>
+        {selectedCharacter.map((charter)=> (
+        <div className="card " style={{ width:'150px'}} key={charter.id}>
+            <img src={charter.image} alt={charter.name} id={charter.id} onClick={() => setIdiDinamico(charter.id)}/>
+            <div className="card-body " >
                 <h5 className="card-title">
                     {charter.name}
                 </h5>
@@ -26,5 +42,13 @@ export const CardItem = ({charter}) => {
                 </p>
             </div>
         </div>
+        ))}
+        </div>
+        <div className='col col-2'>
+            <div className='container mt-5'>
+            <Card detalles={detalle}/>
+            </div>
+        </div>
+        </>
     )
 }

@@ -1,53 +1,47 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React from 'react';
 import './card.css';
 
 // import axios from 'axios';
 
 
 
-const Card = () => {
-    let { id } = useParams();
-
-    let [fetchedData, updateFetchedData] = useState([]);
-    let { name, location, origin, gender, image, species } = fetchedData;
-
-    let api = `https://rickandmortyapi.com/api/character/${id}`;
-
-    useEffect(() => {
-    (async function () {
-        let data = await fetch(api).then((res) => res.json());
-        updateFetchedData(data);
-    }) ();
-    }, [api]);
+export const Card = ({detalles}) => {
+   
     return (
-        <div className='container d-flex justify-content-center mb-5'>
+        
+        <div>
+		 {detalles !== undefined ? (
+            <div className='container d-flex justify-content-center mb-5'>
             <div className='d-flex flex-column gap-3'>
-                <h1 className='text-center'> {name} </h1>
+                <h1 className='text-center'> {detalles.name} </h1>
 
-                <img className='img-fluid' src={image} alt=''/>
+                <img className='img-fluid' src={detalles.image} alt=''/>
 
                 <div className='content'>
                     <div className=''>
                         <span className='fw-bold'> Gender : </span>
-                        {gender}
+                        {detalles.gender}
                     </div>
                     <div>
                         <span className='fw-bold'> Location : </span>
-                        {location?.name}
+                        {detalles.location?.name}
                     </div>
                     <div className=''>
                         <span className='fw-bold'> Origin : </span>
-                        {origin?.name}
+                        {detalles.origin?.name}
                     </div>
                     <div className=''>
                         <span className='fw-bold'> Species : </span>
-                        {species}
+                        {detalles.species}
                     </div>
                 </div>
            </div>
         </div>
+		 ) : (
+		 < span>No hay nada en el objeto</span>
+		 )}
+		</div>
+
+        
     )
 }
-
-export default Card;

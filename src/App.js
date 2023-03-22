@@ -50,25 +50,13 @@ function App() {
     <>
     <div>
       <Navbar brand="Rick & Morty App" />
-    </div>
-    <div className='row'>
-    <div className='col col-4'>
-    
-									<div>
+									<div className='row'>
 										{characters.length > 0 ? (
 											<Card2 selectedCharacter={characters} />
 										) : (
 											<span>No hay nada en el array</span>
 										)}
 									</div>
-								
-      
-    </div>
-    <div className='col col-8'>
-    <div className='container mt-5'>
-      
-    </div>
-    </div>
     </div>
     </>
   )
