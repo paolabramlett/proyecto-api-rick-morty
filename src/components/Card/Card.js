@@ -1,10 +1,6 @@
 import React from 'react';
 import './card.css';
 
-// import axios from 'axios';
-
-
-
 export const Card = ({detalles}) => {
    
     return (

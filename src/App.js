@@ -1,14 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
-
 import './App.css';
 import Navbar from "./components/Navbar";
-//import Characters from "./components/Characters"
-//import Pagination from './components/Paginatio';
-//import Card from './components/Card/Card';
 import { Card2 } from './components/Card2';
-// import Card from './components/Card/Card';
 
 const fetchCharacters = () => {
   const url = "https://rickandmortyapi.com/api/character";
@@ -23,29 +18,14 @@ const fetchCharacters = () => {
 
 function App() {
   const [characters, setCharacters] = useState([]);
-  const [info, setInfo] = useState({})
 
   useEffect(() => {
    fetchCharacters()
     .then((respuesta) => {
       setCharacters(respuesta)
     })
-
   }, [])
-  //console.log({characters})
-  
-
-
-  //const onPrevious = () => {
-  //  fetchCharacters(info.prev);
-  //}
-
- // const onNext = () => {
- //   fetchCharacters(info.next);
- // }
-
-
-
+ 
   return (
     <>
     <div>

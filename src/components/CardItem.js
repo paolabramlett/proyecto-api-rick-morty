@@ -13,7 +13,6 @@ export const CardItem = ({selectedCharacter}) => {
             setDetalle(respuesta)
          })
        }, [idDinamico])
-       console.log({detalle})
     return (
         <>
         <div className='col col-10 d-flex flex-wrap'>
